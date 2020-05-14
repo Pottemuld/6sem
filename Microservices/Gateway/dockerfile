@@ -1,0 +1,8 @@
+# BASE
+FROM nginx:alpine
+
+#copying certs into nginx
+COPY /certs/ /etc/nginx/certs/
+#copying configfile into nginx
+#COPY ./default.conf /etc/nginx/conf.d/default.conf
+

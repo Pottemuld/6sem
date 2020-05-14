@@ -25,8 +25,6 @@ var server = http.createServer(app);
 app.get('/metadata.json', function (req, res) {
 
   const db = new pg.Client(conString);
-  console.log("Client has asked for metadata");
-
   db.connect(function (err) {
     if (err) {
       console.error('could not connect to postgres', err);
@@ -77,7 +75,6 @@ app.get('/playSong', (req, res) => {
 
     const filePath = path.resolve(__dirname, './assets', './music', req.query.song + '.mp3');
 
-    // not actually sure this is needed for anything???
     const stat = fileSystem.statSync(filePath);   // we need the size to divide into segments in the same way as frontend
 
     var tempArray = [];
@@ -90,14 +87,11 @@ app.get('/playSong', (req, res) => {
       songArray.push(tmpSeg);
       // should result in [ [1, 1, 1, 0 ... (for SEGMENT_SIZE)], [...], [...], ...]
     }
-    console.log("We are done loading the song!");
 
-    console.log("Sending segment of length: " + songArray[req.query.segment].length);
     res.status(200).send(songArray[req.query.segment]);
 
   } else {
     console.log("Sending segment " + req.query.segment);
-    console.log("This segment is of length " + songArray[req.query.segment].length);
     res.status(200).send(songArray[req.query.segment]);
     res.end();
   }

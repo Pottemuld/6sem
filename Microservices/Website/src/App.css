@@ -1,0 +1,85 @@
+/* Overall div for everything */
+.App {
+
+}
+
+/* Only for formatting the title name of service */
+.thisIsFormattingForTheMainTitleOfTheGenericUnnamedStreamingServiceThatWeHaventMadeYet {
+  font-size: 100px;
+  color: rgb(25, 20, 20);
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+h1 {
+  color: rgb(25, 20, 20);
+}
+
+h2 {
+  color: rgb(25, 20, 20);
+}
+
+h3 {
+  color: rgb(25, 20, 20);
+  padding-left: 30px;
+  font-size: 40px;
+}
+
+.misc-p {
+  color: rgb(25, 20, 20);
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+/* Formatting for the login screen */
+.loginSystem {
+  text-align: center;
+}
+
+.loginText {
+  padding-top: 3%;
+  padding-bottom: 1%;
+  color: rgb(25, 20, 20);
+  margin: 0;
+}
+
+/* covers both email and username inputs */
+.usernameBox {
+  
+}
+
+.passwordBox {
+  
+}
+
+/* covers both the submit and create new user buttons on the login page */
+.loginButtons {
+  margin: 1%;
+  margin-top: 2%;
+}
+
+/* used for displaying confirmations/warnings after trying to register users */
+.respText {
+  color: red;
+}
+
+/* formatting for the song cards displaying single songs */
+.songCard {
+  background: rgb(25, 20, 20);
+  min-height: 10vh;
+  width: 60%;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1%;
+  color: rgb(200, 200, 200);
+  font-size: 20px;
+}
+
+.everything-wrapped {
+  margin-top: 23vh;
+}
