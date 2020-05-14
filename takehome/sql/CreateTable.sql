@@ -1,5 +1,0 @@
-CREATE TABLE  persons (
-personid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR (40),
-lastname VARCHAR (40)
-);
