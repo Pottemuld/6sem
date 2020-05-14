@@ -9,7 +9,7 @@ app.use(cors());
 app.options('*', cors());
 
 
-app.use('/assets', express.static('assets/images'));
+app.use('/assets', express.static('assets'));
 
 var server = http.createServer(app);
 
