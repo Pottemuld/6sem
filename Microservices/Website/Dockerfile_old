@@ -9,8 +9,7 @@ ENV PATH ./node_modules/.bin:$PATH
 
 RUN npm install
 RUN npm install react-scripts
-RUN npm install -g serve
 
 COPY . .
 
-CMD ["serve", "-s", "build"]
+CMD ["npm", "start"]
