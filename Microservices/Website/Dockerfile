@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /music-app
+WORKDIR /Website
 
 COPY package.json ./package.json
 COPY package-lock.json ./package-lock.json
