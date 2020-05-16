@@ -1,17 +1,13 @@
-const http = require('http');
 const express = require('express');
-const app = express();
 const pg = require('pg');   //database connection
 const conString = "postgresql://uzbxyxyi:j7b-g-qv6fw30KkL0dAkN1CMrPMg1sPs@balarama.db.elephantsql.com:5432/uzbxyxyi" //Can be found in the Details page
-
 const cors = require('cors');
+
+const app = express();
 app.use(cors());
 app.options('*', cors());
 
-
 app.use('/assets', express.static('assets'));
-
-var server = http.createServer(app);
 
 app.get('/metadata.json', function (req, res) {
 
@@ -54,7 +50,7 @@ app.get('/metadata.json', function (req, res) {
   });
 });
 
-server.listen(2000, function () {
+app.listen(2000, function () {
   //server.listen(process.env.PORT || '2000', function () {
   console.log('Server app listening on port 2000!');
 });

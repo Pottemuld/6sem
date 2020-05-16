@@ -1,18 +1,15 @@
-const http = require('http');
 const fileSystem = require('fs');
 const express = require('express');
 const path = require('path');
-const app = express();
-
 const cors = require('cors');
+
+const app = express();
 app.use(cors());
 app.options('*', cors());
 
 const SEGMENT_SIZE = 200000;    // size of each segment sent of a song being streamed
 var loadedSong = "";
 var songArray = [];
-
-var server = http.createServer(app);
 
 app.get('/playSong', (req, res) => {
   console.log("Received request to stream this song: " + req.query.song);
@@ -48,7 +45,7 @@ app.get('/playSong', (req, res) => {
 });
 
 
-server.listen(2001, function () {
+app.listen(2001, function () {
   //server.listen(process.env.PORT || '2001', function () {
   console.log('Server app listening on port 2001!');
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/actions.js';
-import { LOGIN_SERVER } from '../../env_vars.js';
+import { SERVER } from '../../env_vars.js';
 
 function Login() {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Login() {
         } else {
             try {
                 // call server and check credentials
-                let resp = await fetch(`${LOGIN_SERVER}/checkCred?email=${document.getElementById("emailField").value}&password=${document.getElementById('passwordField').value}`,
+                let resp = await fetch(`${SERVER}/checkCred?email=${document.getElementById("emailField").value}&password=${document.getElementById('passwordField').value}`,
                     {
                         credentials: 'same-origin'
                     });

@@ -1,15 +1,12 @@
 const User = require('./User.js');
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const pg = require('pg');
 const crypto = require('crypto');
 
 const conString = "postgresql://uzbxyxyi:j7b-g-qv6fw30KkL0dAkN1CMrPMg1sPs@balarama.db.elephantsql.com:5432/uzbxyxyi" //Can be found in the Details page
 
 const server = express();
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json());
 server.use(cors());
 server.options('*', cors());
 

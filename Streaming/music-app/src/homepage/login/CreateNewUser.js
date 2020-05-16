@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LOGIN_SERVER } from '../../env_vars.js';
+import { SERVER } from '../../env_vars.js';
 
 
 async function createUser() {
@@ -12,7 +12,7 @@ async function createUser() {
 
     } else {
         try {
-            let resp = await fetch(`${LOGIN_SERVER}/newUser?email=${document.getElementById("emailField").value}&password=${document.getElementById("passField").value}`,
+            let resp = await fetch(`${SERVER}/newUser?email=${document.getElementById("emailField").value}&password=${document.getElementById("passField").value}`,
                 {
                     method: 'POST',
                     credentials: 'same-origin'

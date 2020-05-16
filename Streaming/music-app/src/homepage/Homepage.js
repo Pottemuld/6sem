@@ -9,7 +9,7 @@ import { addTitle, addSongDur, addSong_url, addSize, addAlbum, addArtist, addArt
 import SongOverview from './browser/SongOverview.js';
 import NotFound from './misc/NotFound.js';
 import AccountSettings from './misc/AccountSettings';
-import { MUSIC_SERVER } from '../env_vars.js';
+import { SERVER } from '../env_vars.js';
 
 
 function Homepage() {
@@ -23,7 +23,7 @@ function Homepage() {
   useEffect(loadMetaData, []);
 
   function loadMetaData() {
-    fetch(`${MUSIC_SERVER}/metadata.json`, {credentials: 'same-origin'})
+    fetch(`${SERVER}/metadata.json`, {credentials: 'same-origin'})
       .then((response => response.json()))
       .then((json => JSON.parse(json)))
       .then((data) => insertData(data));
@@ -38,7 +38,7 @@ function insertData(data){
     dispatch(addSize(info.size));
     dispatch(addAlbum(info.album));
     dispatch(addArtist(info.artist));
-    dispatch(addArt(`${MUSIC_SERVER}/assets/${info.image_url}`));
+    dispatch(addArt(`${SERVER}/assets/${info.image_url}`));
   });
 }
 

@@ -4,7 +4,7 @@ import Previous from './Previous';
 import Skip from './Skip';
 import { useSelector } from 'react-redux';
 import { StreamingContext } from './StreamingContext';
-import { MUSIC_SERVER } from '../env_vars.js';
+import { SERVER } from '../env_vars.js';
 
 function Player() {
     const [isPlaying, setPlaying, currentSong, setSong, previousSong, setPrevious, mediaSource, setMediaSource, audio, setAudio] = useContext(StreamingContext);
@@ -40,7 +40,7 @@ function Player() {
             var seg = 0;
 
             // we should always expect to receive one not-full segment
-            fetch(`${MUSIC_SERVER}/playSong?song=${song_url}&segment=${seg}`)
+            fetch(`${SERVER}/playSong?song=${song_url}&segment=${seg}`)
                 .then(function (resp) {
                     return resp.arrayBuffer();
                 })
@@ -52,7 +52,7 @@ function Player() {
                     setPlaying(true);
 
                     seg++;
-                    fetch(`${MUSIC_SERVER}/playSong?song=${song_url}&segment=${seg}`)
+                    fetch(`${SERVER}/playSong?song=${song_url}&segment=${seg}`)
                         .then(function (resp) {
                             return resp.arrayBuffer();
                         })
@@ -63,7 +63,7 @@ function Player() {
 
                             // loading two additional initial segments because metadata can be a lot
                             seg++;
-                            fetch(`${MUSIC_SERVER}/playSong?song=${song_url}&segment=${seg}`)
+                            fetch(`${SERVER}/playSong?song=${song_url}&segment=${seg}`)
                                 .then(function (resp) {
                                     return resp.arrayBuffer();
                                 })
@@ -72,7 +72,7 @@ function Player() {
                                     console.log("Received segment " + seg);
 
                                     seg++;
-                                    fetch(`${MUSIC_SERVER}/playSong?song=${song_url}&segment=${seg}`)
+                                    fetch(`${SERVER}/playSong?song=${song_url}&segment=${seg}`)
                                         .then(function (resp) {
                                             return resp.arrayBuffer();
                                         })
@@ -89,7 +89,7 @@ function Player() {
                 if (isLoading && Math.round(audio.currentTime % 2) == 0) {
                     seg++;
 
-                    fetch(`${MUSIC_SERVER}/playSong?song=${song_url}&segment=${seg}`)
+                    fetch(`${SERVER}/playSong?song=${song_url}&segment=${seg}`)
                         .then(function (resp) {
                             return resp.arrayBuffer();
                         })
