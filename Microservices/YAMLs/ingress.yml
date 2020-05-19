@@ -1,0 +1,29 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "ingress-router"
+  namespace: "default"
+  annotations:
+    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: "ingress-ip"
+spec:
+  backend:
+    serviceName: "website-service"
+    servicePort: 5000
+  tls:
+  - secretName: "duosound-cert"
+  rules:
+  - http:
+      paths:
+      - path: "/songinfo/*"
+        backend:
+          serviceName: "songinfo-service"
+          servicePort: 2000
+      - path: "/music/*"
+        backend:
+          serviceName: "music-service"
+          servicePort: 2001
+      - path: "/userdata/*"
+        backend:
+          serviceName: "userdata-service"
+          servicePort: 8080

@@ -7,9 +7,13 @@ const app = express();
 app.use(cors());
 app.options('*', cors());
 
-app.use('/assets', express.static('assets'));
+app.use('/songinfo/assets', express.static('assets'));
 
-app.get('/metadata.json', function (req, res) {
+app.get('/songinfo/health', (req, res) => {
+  res.status(200).send("Successful songinfo-connect");
+});
+
+app.get('/songinfo/metadata.json', function (req, res) {
 
   const db = new pg.Client(conString);
   db.connect(function (err) {

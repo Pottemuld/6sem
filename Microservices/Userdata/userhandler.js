@@ -10,8 +10,12 @@ const server = express();
 server.use(cors());
 server.options('*', cors());
 
+server.get('/userdata/health', (req, res) => {
+    res.status(200).send("Successful userdata-connect");
+  });
+
 // for receiving a login request, checking whether the credentials are correct
-server.get('/checkCred', (req, res) => {
+server.get('/userdata/checkCred', (req, res) => {
     //Create new dbclient
     const db = new pg.Client(conString);
 
@@ -56,7 +60,7 @@ server.get('/checkCred', (req, res) => {
 });
 
 // for creating a new user in the system
-server.post('/newUser', (req, res) => {
+server.post('/userdata/newUser', (req, res) => {
     const db = new pg.Client(conString);
 
     let hashedPass = crypto.createHmac('sha256', req.query.password).update("ThisIsAnExampleOfSalt").digest('hex');

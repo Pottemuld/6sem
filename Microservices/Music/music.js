@@ -11,7 +11,11 @@ const SEGMENT_SIZE = 200000;    // size of each segment sent of a song being str
 var loadedSong = "";
 var songArray = [];
 
-app.get('/playSong', (req, res) => {
+app.get('/music/health', (req, res) => {
+  res.status(200).send("Successful music-connect");
+});
+
+app.get('/music/playSong', (req, res) => {
   console.log("Received request to stream this song: " + req.query.song);
   console.log("Requested segment is: " + req.query.segment);
 
