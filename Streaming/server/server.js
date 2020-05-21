@@ -125,10 +125,10 @@ app.get('/checkCred', (req, res) => {
               foundUser = new User(result.rows[0].user_id, result.rows[0].email, result.rows[0].password);
 
               //check if email and password match
-              if (askUser.email !== foundUser.email || askUser.password !== foundUser.password) {
-                  res.status(401).send("401 - Email or password does not match!");
+              if (askUser.password !== foundUser.password) {
+                  res.status(401).send("401 - password does not match!");
 
-              } else if (askUser.email === foundUser.email && askUser.password === foundUser.password) {
+              } else if (askUser.password === foundUser.password) {
                   res.status(200).send(foundUser.id + "");
               }
               //Called data stored locally ending session
@@ -143,7 +143,7 @@ app.get('/checkCred', (req, res) => {
 app.post('/newUser', (req, res) => {
   const db = new pg.Client(conString);
 
-  let hashedPass = crypto.createHmac('sha256', req.query.password).digest('hex');
+  let hashedPass = crypto.createHmac('sha256', req.query.password).update("ThisIsAnExampleOfSalt").digest('hex');
   let newUser = new User(undefined, (req.query.email).toLowerCase(), hashedPass); //users.find(u => u.email == req.query.email);
 
   db.connect(function (err) {

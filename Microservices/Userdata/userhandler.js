@@ -45,10 +45,10 @@ server.get('/userdata/checkCred', (req, res) => {
                 foundUser = new User(result.rows[0].user_id, result.rows[0].email, result.rows[0].password);
 
                 //check if email and password match
-                if (askUser.email !== foundUser.email || askUser.password !== foundUser.password) {
-                    res.status(401).send("401 - Email or password does not match!");
+                if (askUser.password !== foundUser.password) {
+                    res.status(401).send("401 - password does not match!");
 
-                } else if (askUser.email === foundUser.email && askUser.password === foundUser.password) {
+                } else if (askUser.password === foundUser.password) {
                     res.status(200).send(foundUser.id + "");
                 }
                 //Called data stored locally ending session
