@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: userdata
-        image: gcr.io/duosound/userdata:v1
+        image: gcr.io/duosound/userdata:latest
         ports:
         - containerPort: 8080
 ---

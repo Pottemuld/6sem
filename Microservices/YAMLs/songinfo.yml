@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: songinfo
-        image: gcr.io/duosound/songinfo:v1
+        image: gcr.io/duosound/songinfo:latest
         ports:
         - containerPort: 2000
 ---
