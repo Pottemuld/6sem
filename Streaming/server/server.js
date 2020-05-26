@@ -59,6 +59,15 @@ app.get('/metadata.json', function (req, res) {
   });
 });
 
+app.get('/test', (req, res) => {
+  
+  let val = 0;
+  for (let i = 0; i < 100; i++) {
+    val = Math.pow(127, 3);
+  }
+  
+  res.status(200).send(val);
+});
 
 app.get('/playSong', (req, res) => {
   console.log("Received request to stream this song: " + req.query.song);

@@ -15,6 +15,16 @@ app.get('/music/health', (req, res) => {
   res.status(200).send("Successful music-connect");
 });
 
+app.get('/music/test', (req, res) => {
+  
+  let val = 0;
+  for (let i = 0; i < 100; i++) {
+    val = Math.pow(127, 3);
+  }
+  
+  res.status(200).send(val);
+});
+
 app.get('/music/playSong', (req, res) => {
   console.log("Received request to stream this song: " + req.query.song);
   console.log("Requested segment is: " + req.query.segment);
