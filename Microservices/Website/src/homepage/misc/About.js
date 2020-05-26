@@ -15,12 +15,18 @@ function About() {
                  who are currently working on our bachelors project. <br/>
                 This site has been created purely for testing purposes, as a somewhat generic streaming service
                  against which we can measure certain improvements and/or changes that our projects may introduce to this type of service. <br/> <br/>
-                It has been developed as a collaboration by: <br/> 
+                The monolithic version of the system has been developed as a collaboration by: <br/> 
                  - Alexander Micheelsen Rol, alrol17 <br/>
                  - Lasse Fisker, lafis17 <br/>
                  - Patrick Christoffersen, pachr16 <br/>
                  - Rasmus Jensen, rasje17 <br/>
+            </p> 
+            <p className="misc-p">
+                Since then, the system has been refactored to a microservice-based architecture, which has been done by: <br/>
+                 - Lasse Fisker, lafis17 <br/>
+                 - Patrick Christoffersen, pachr16 <br/>
             </p>
+                    
         </div>
     );
 }
