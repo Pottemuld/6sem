@@ -60,13 +60,16 @@ app.get('/metadata.json', function (req, res) {
 });
 
 app.get('/test', (req, res) => {
-  
+
   let val = 0;
-  for (let i = 0; i < 100; i++) {
-    val = Math.pow(127, 3);
+  for (let i = 0; i <= 1000000000; i++) {
+    val = Math.pow(1217, 30);
+    if (i == 1000000000) {
+      res.status(200);
+      res.send("Done");
+      break;
+    }
   }
-  
-  res.status(200).send(val);
 });
 
 app.get('/playSong', (req, res) => {

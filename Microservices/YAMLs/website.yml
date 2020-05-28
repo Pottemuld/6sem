@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: website
-        image: gcr.io/duosound/website:latest
+        image: gcr.io/duosound/website:fortesting
         ports:
         - containerPort: 5000
 ---
