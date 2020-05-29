@@ -16,9 +16,14 @@ const SEGMENT_SIZE = 200000;    // size of each segment sent of a song being str
 var loadedSong = "";
 var songArray = [];
 
-app.use('/assets', express.static('assets/images'));
 
-app.get('/metadata.json', function (req, res) {
+app.use('/server/assets', express.static('assets/images'));
+
+app.get('/server/health', (req, res) => {
+  res.status(200).send("Server is healthy!");
+})
+
+app.get('/server/metadata.json', function (req, res) {
 
   const db = new pg.Client(conString);
   db.connect(function (err) {
@@ -59,7 +64,7 @@ app.get('/metadata.json', function (req, res) {
   });
 });
 
-app.get('/test', (req, res) => {
+app.get('/server/test', (req, res) => {
 
   let val = 0;
   for (let i = 0; i <= 1000000000; i++) {
@@ -72,7 +77,7 @@ app.get('/test', (req, res) => {
   }
 });
 
-app.get('/playSong', (req, res) => {
+app.get('/server/playSong', (req, res) => {
   console.log("Received request to stream this song: " + req.query.song);
   console.log("Requested segment is: " + req.query.segment);
 
@@ -107,7 +112,7 @@ app.get('/playSong', (req, res) => {
 
 
 // for receiving a login request, checking whether the credentials are correct
-app.get('/checkCred', (req, res) => {
+app.get('/server/checkCred', (req, res) => {
   //Create new dbclient
   const db = new pg.Client(conString);
 
@@ -152,7 +157,7 @@ app.get('/checkCred', (req, res) => {
 });
 
 // for creating a new user in the system
-app.post('/newUser', (req, res) => {
+app.post('/server/newUser', (req, res) => {
   const db = new pg.Client(conString);
 
   let hashedPass = crypto.createHmac('sha256', req.query.password).update("ThisIsAnExampleOfSalt").digest('hex');

@@ -1,0 +1,21 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "ingress-router"
+  namespace: "default"
+  annotations:
+    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: "monolithic-ip"
+spec:
+  backend:
+    serviceName: "client-service"
+    servicePort: 5000
+  tls:
+  - secretName: "duosound-cert"
+  rules:
+  - http:
+      paths:
+      - path: "/server/*"
+        backend:
+          serviceName: "server-service"
+          servicePort: 2000
