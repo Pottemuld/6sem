@@ -16,6 +16,9 @@ spec:
         image: gcr.io/duosound/music:fortesting
         ports:
         - containerPort: 2001
+        resources:
+          requests:
+            cpu: "250m"
 ---
 apiVersion: v1
 kind: Service
@@ -28,3 +31,16 @@ spec:
   ports:
   - port: 2001
     targetPort: 2001
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: music-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: music-deployment
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 25
