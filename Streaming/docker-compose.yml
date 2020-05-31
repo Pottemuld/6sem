@@ -22,17 +22,11 @@ services:
         volumes:
             - ./serverProxy/default.conf:/etc/nginx/conf.d/default.conf:ro
            # - ./serverProxy/certs:/etc/nginx/certs
-    loginserver:
-        container_name: nodeLogin
+    server:
+        container_name: server
         build:
-            context: ./loginDataServer
-            dockerfile: loginDataServer
+            context: ./server
+            dockerfile: Dockerfile
         environment:
             - NODE_ENV=development
-    musicserver:
-        container_name: nodeMusic
-        build:
-            context: ./musicServer
-            dockerfile: musicServer
-        environment:
-            - NODE_ENV=development
+    
